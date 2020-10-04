@@ -11,6 +11,7 @@ body {
   align-items: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  background-color: rgb(65, 62, 62);
 }
 
 h1 {
@@ -19,11 +20,24 @@ h1 {
 }
 
 .main-container {
-  background-color: rgb(243, 180, 97);
+  background-color: rgba(170, 162, 152, 0.329);
   position: relative;
   border-radius: 5px;
   height: 95vh;
   width: 50%;
+  padding-bottom: 2em;
+  border: 2px solid pink;
+}
+
+@media screen and (min-width: 320px) and (max-width: 568px) {
+  .main-container {
+    background-color: rgba(170, 162, 152, 0.329);
+    position: relative;
+    border-radius: 5px;
+    height: 95vh;
+    width: 100%;
+    padding-bottom: 2em;
+  }
 }
 
 .title-container {
@@ -57,7 +71,7 @@ h1 {
 }
 
 .typeBox {
-  background-color: rgb(36, 36, 32);
+  background-color: cadetblue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,7 +79,7 @@ h1 {
   height: 100%;
 }
 
-#textbox {
+#input {
   height: 100%;
   width: 100%;
 }
@@ -87,4 +101,30 @@ h1 {
 #sendBtn {
   height: 80%;
   width: 90%;
+}
+
+.textBuble {
+  display: block;
+  width: max-content;
+  /* max-width: inherit; */
+  padding: 10px 15px;
+  border-radius: 7.5px;
+}
+.user {
+  color: blue;
+  background-color: linen;
+  margin: 20px 20px auto 20px;
+}
+.bot {
+  color: red;
+  background-color: mediumaquamarine;
+  margin-left: auto;
+  margin: 20px 20px 20px auto;
+}
+
+.timeStamp {
+  color: rgba(0, 0, 0, 0.699);
+  font-size: 0.7em;
+  margin: 5px;
+  /* border: 1px solid #000; */
 }
