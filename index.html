@@ -11,12 +11,20 @@
       <div class="title-container">
         <h1>let's chat</h1>
       </div>
-      <div class="chat-container"></div>
+      <div class="chat-container" id="chat-container">
+        <!-- <p>hello</p> -->
+      </div>
       <div class="chatBox-container">
         <div class="chatBox-inner">
           <div class="typeBox">
             <div class="typeArea">
-              <textarea name="" id="textbox" cols="30" rows="10"></textarea>
+              <input
+                name=""
+                id="input"
+                placeholder="Type a message..."
+                cols="30"
+                rows="10"
+              ></input>
             </div>
           </div>
           <div class="sendBtn-container">
@@ -26,7 +34,95 @@
       </div>
     </section>
 
-    <script src="./JS/function.js"></script>
+    <!-- <script src="./JS/function.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+
+const catchInputs = [
+          ["hi", "yo", "hello", "hey"],
+          ["how are you", "how are you doing"],
+          ["what is up", "what is going on", "what are you doing"],
+          ["not too bad", "i am good thanks", "great"],
+          ["not great", "tired", "bored"],
+          ["tell me a fact", "tell me something interesting"],
+          ["thank you", "thanks", "no problem"],
+          ["bye", "goodbye", "good bye", ]
+      ];
+
+      const catchOutputs = [
+          ["Hello", "Hey", "Hi there!", "what's good"],
+          ["Not bad thanks, how are you doing?", "great, how are you feeling?", "Amazing, what about you?"],
+          ["Not much", "So much I can't remember", "working on projects"],
+          ["That's good", "Good to hear", "Great"],
+          ["Sorry to hear that", "That's a shame"],
+          ["People are crazy"],
+          ["No problem", "Pleasure is mine", "You're welcome"],
+          ["Take care", "Goodbye", "See you later"]
+      ];
+
+      const randomOutputs = [
+          "Interesting",
+          "I'm listening",
+          "Tell me more",
+          "That's Tricky",
+          "Oh yeee"
+      ];
+
+      // on enter press
+      $("#input").on("keypress", function(e){
+        const ENTER_KEY = 13;
+        
+        if(e.keyCode === ENTER_KEY){
+          const input = $("#input").val();
+          $('#input').val("");
+          output(input);
+        }
+      });
+
+      //decider function
+      output = (input) => {
+        const currentDate = new Date()
+        const time = `${currentDate.getHours()}:${currentDate.getMinutes()}`
+        let result
+        let text = input.toLowerCase()
+
+        if (compare(catchInputs, catchOutputs, text)){
+          result = compare(catchInputs, catchOutputs, text);
+        } else {
+          result = randomOutputs[Math.floor(Math.random() * randomOutputs.length)]
+        }
+        
+        bot(result, time)
+        user(text, time)   
+      }
+
+      // Work on this function
+
+      compare = (userArray, botArray, string) => {
+        let item;
+        for(let a = 0; a < userArray.length; a++) {
+          for(let b = 0; b < botArray.length; b++) {
+            if(userArray[a][b] == string){
+              items = botArray[a]
+              item = items[Math.floor(Math.random() * items.length)];
+            }
+          }
+        }
+        return item;
+      }
+
+      user = (text, time) => {
+          $('#chat-container').append(`<div class="textBuble user">User: ${text} <span class="timeStamp">${time}</span></div>`);
+        }
+
+      bot = (result, time) => {
+        setTimeout(function(){
+          $('#chat-container').append(`<div class="textBuble bot">Top Bot: ${result} <span class="timeStamp">${time}</span></div>`)
+        }, 1000);
+        }
+
+    </script>
+
   </body>
 </html>
