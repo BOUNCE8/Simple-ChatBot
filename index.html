@@ -11,7 +11,9 @@
       <div class="title-container">
         <h1>let's chat</h1>
       </div>
-      <div class="chat-container"></div>
+      <div class="chat-container" id="chat-container">
+        <!-- <p>hello</p> -->
+      </div>
       <div class="chatBox-container">
         <div class="chatBox-inner">
           <div class="typeBox">
@@ -32,7 +34,74 @@
       </div>
     </section>
 
-    <script src="./JS/function.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+    <!-- <script src="./JS/function.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+
+      
+
+      // on enter press
+      $("#input").on("keypress", function(e){
+        const ENTER_KEY = 13;
+        
+        if(e.keyCode === ENTER_KEY){
+          const response = $(triggerOutputs)
+          const input = $("#input").val();
+          $('#chat-container').append(`<div>${input}</div>`);
+          $('#input').val("");
+          bot(response);
+          output(input);
+        }
+      })
+
+      //decider function
+      output = (input) => {
+        let result
+        console.log(input)
+      }
+
+      // Work on this function
+      // compare = (triggerInputs, triggerOutputs, string) => {
+
+
+      // }
+
+
+
+      bot = (response) => {
+        setTimeout(function(){
+          $('#chat-container').append(`<div>${response[0][Math.floor(Math.random()*3)]}</div>`)
+        }, 1000);
+      }
+
+      
+
+      const triggerOutputs = [
+          ["Hello", "Hey", "Hi there!", "what's good"],
+          ["Not bad thanks, how are you doing?", "great, how are you feeling?", "Amazing, what about you?"],
+          ["Not much", "So much I can't remember", "working on projects"],
+          ["That's good", "Good to hear", "Great"],
+          ["Sorry to hear that", "That's a shame"],
+          ["People are crazy"],
+          ["No problem", "Pleasure is mine", "You're welcome"],
+          ["Take care", "Goodbye", "See you later"]
+      ];
+
+      const triggerInputs = [
+          ["hi", "yo", "hello", "yo"],
+          ["how are you", "how are you doing"],
+          ["what is up", "what is going on", "what are you doing"]
+          ["not too bad", "i am good thanks", "great"],
+          ["not great", "tired", "bored"],
+          ["tell me a fact", "tell me something interesting"],
+          ["thank you", "thanks", "no problem"],
+          ["bye", "goodbye", "good bye", ]
+      ];
+
+      
+
+    </script>
+
   </body>
 </html>
