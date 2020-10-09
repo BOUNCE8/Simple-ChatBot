@@ -1,5 +1,3 @@
-
-
       const catchInputs = [
           ["hi", "yo", "hello", "hey"],
           ["how are you", "how are you doing"],
@@ -47,7 +45,7 @@
       });
       
       // on click send
-      $("#sendBtn").on("click", function(e) {
+      $("#send-btn").on("click", function(e) {
           const input = $("#input").val();
           if(input != "") {
             output(input);
@@ -92,13 +90,13 @@
 
       user = (text, time) => {
           text = text.charAt(0).toUpperCase() + text.substring(1)
-          $('#chat-container-inner').append(`<div class="outerBubbleUser"><div class="textBuble user"><p>${text}</p></div><span class="timeStamp sml-margin-l"><p>${time}</p></span></div>`);
+          $('#chat-container').append(`<div class="outerBubbleUser"><div class="textBuble user"><p>${text}</p></div><span class="timeStamp sml-margin-l"><p>${time}</p></span></div>`);
         }
 
       bot = (result, time) => {
         setTimeout(function(){
-          $('#chat-container-inner').append(`<div class="outerBubbleBot"><span class="timeStamp sml-margin-r"><p>${time}</p></span><div class="textBuble bot"><p>${result}</p> </div></div>`)
+          $('#chat-container').append(`<div class="outerBubbleBot"><span class="timeStamp sml-margin-r"><p>${time}</p></span><div class="textBuble bot"><p>${result}</p> </div></div>`)
         }, 1000);
         }
 
-      scrollDown = () => $('#chat-container-inner').animate({scrollTop:1000000}, 800)
+      scrollDown = () => $('#chat-container').animate({scrollTop:1000000}, 800)
