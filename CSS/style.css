@@ -56,7 +56,6 @@ body {
 #chat-container {
   flex-grow: 1;
   background: rgba(255, 255, 255, 0.322);
-  /* border: dotted 2px #000; */
   max-height: 520px;
   overflow-y: auto;
 }
@@ -71,7 +70,6 @@ body {
 }
 
 #input-box {
-  /* border: 2px solid yellow; */
   width: 85%;
   display: flex;
   justify-content: flex-end;
@@ -90,7 +88,6 @@ body {
 }
 
 #send-btn-container {
-  /* border: 1px solid blue; */
   width: 16%;
   display: flex;
   justify-content: center;
@@ -109,7 +106,6 @@ body {
 }
 
 .outerBubbleUser {
-  /* background-color: blue; */
   display: flex;
   align-items: center;
   width: max-content;
@@ -117,7 +113,6 @@ body {
 }
 
 .outerBubbleBot {
-  /* background-color: red; */
   display: flex;
   align-items: center;
   width: max-content;
@@ -127,7 +122,8 @@ body {
 .textBuble {
   display: inline-block;
   width: max-content;
-  /* max-width: 200px; */
+  max-width: 400px;
+  overflow-wrap: break-word;
   padding: 10px 15px;
   border-radius: 7.5px;
   box-shadow: 2px 1px 1.5px rgba(0, 0, 0, 0.356);
@@ -146,11 +142,6 @@ body {
   margin-left: auto;
   margin: 0px 0px 0px auto;
   border-radius: 15px 2.5px 15px 15px;
-}
-
-.chat-text {
-  /* max-width: 10px; */
-  /* margin-right: 1em; */
 }
 
 .timeStamp {
