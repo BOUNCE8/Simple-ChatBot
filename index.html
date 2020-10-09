@@ -3,105 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="CSS/style.css" />
-    <title>Chat Bot App</title>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <title>ChatBot 2.0</title>
   </head>
   <body>
-    <section class="main-container">
-      <div class="title-container">
-        <h1>let's chat</h1>
+    <section id="main-container">
+      <div id="header">
+        <h1 id="title">let's chat</h1>
       </div>
-      <div class="chat-container" id="chat-container">
-        <!-- <p>hello</p> -->
+      <div id="chat-container">
       </div>
-      <div class="chatBox-container">
-        <div class="chatBox-inner">
-          <div class="typeBox">
-            <div class="typeArea">
-              <input
+      <div id="input-container">
+        <div id="input-box">
+          <input
                 name=""
                 id="input"
-                placeholder="Type a message..."
+                placeholder=" type a message..."
                 cols="30"
                 rows="10"
               ></input>
-            </div>
-          </div>
-          <div class="sendBtn-container">
-            <button id="sendBtn">send</button>
-          </div>
+        </div>
+        <div id="send-btn-container">
+          <button id="send-btn"><i class="fas fa-arrow-right"></i></button>
         </div>
       </div>
     </section>
-
-    <!-- <script src="./JS/function.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-    <script>
-
-      
-
-      // on enter press
-      $("#input").on("keypress", function(e){
-        const ENTER_KEY = 13;
-        
-        if(e.keyCode === ENTER_KEY){
-          const response = $(triggerOutputs)
-          const input = $("#input").val();
-          $('#chat-container').append(`<div>${input}</div>`);
-          $('#input').val("");
-          bot(response);
-          output(input);
-        }
-      })
-
-      //decider function
-      output = (input) => {
-        let result
-        console.log(input)
-      }
-
-      // Work on this function
-      // compare = (triggerInputs, triggerOutputs, string) => {
-
-
-      // }
-
-
-
-      bot = (response) => {
-        setTimeout(function(){
-          $('#chat-container').append(`<div>${response[0][Math.floor(Math.random()*3)]}</div>`)
-        }, 1000);
-      }
-
-      
-
-      const triggerOutputs = [
-          ["Hello", "Hey", "Hi there!", "what's good"],
-          ["Not bad thanks, how are you doing?", "great, how are you feeling?", "Amazing, what about you?"],
-          ["Not much", "So much I can't remember", "working on projects"],
-          ["That's good", "Good to hear", "Great"],
-          ["Sorry to hear that", "That's a shame"],
-          ["People are crazy"],
-          ["No problem", "Pleasure is mine", "You're welcome"],
-          ["Take care", "Goodbye", "See you later"]
-      ];
-
-      const triggerInputs = [
-          ["hi", "yo", "hello", "yo"],
-          ["how are you", "how are you doing"],
-          ["what is up", "what is going on", "what are you doing"]
-          ["not too bad", "i am good thanks", "great"],
-          ["not great", "tired", "bored"],
-          ["tell me a fact", "tell me something interesting"],
-          ["thank you", "thanks", "no problem"],
-          ["bye", "goodbye", "good bye", ]
-      ];
-
-      
-
-    </script>
-
+    <script src="/JS/jquey.js"></script>
+    <script src="/JS/function.js"></script>
   </body>
 </html>
