@@ -45,6 +45,22 @@ body {
   background: transparent; /* Optional: just make scrollbar invisible */
 }
 
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #c1c4d0;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #c1c4d0;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #c1c4d0;
+}
+
 #main-container {
   /* background: #fefefe; */
   min-width: 500px;
@@ -100,7 +116,7 @@ body {
 
 @media screen and (min-width: 320px) and (max-width: 767.9px) {
   #title {
-    font-size: 1.25em;
+    font-size: 1.5em;
     color: #fefefe;
   }
 }
@@ -173,7 +189,7 @@ body {
     outline: none;
     padding-left: 10px;
     font-size: 1em;
-    color: #c1c4d0;
+    color: #bcbfca;
   }
 }
 
