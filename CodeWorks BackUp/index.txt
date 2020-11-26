@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <title>Chat Bot App</title>
+  </head>
+  <body>
+    <section class="main-container">
+      <div class="title-container">
+        <h1>let's chat</h1>
+      </div>
+      <div class="chat-container" id="chat-container">
+        <div class="chat-container-inner" id="chat-container-inner">
+        </div>
+      </div>
+      <div class="chatBox-container">
+        <div class="chatBox-inner">
+          <div class="typeBox">
+            <div class="typeArea">
+              <input
+                name=""
+                id="input"
+                placeholder="Type a message..."
+                cols="30"
+                rows="10"
+              ></input>
+            </div>
+          </div>
+          <div class="sendBtn-container">
+            <button id="sendBtn"><i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <script src="./JS/function.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+
+const catchInputs = [
+          ["hi", "yo", "hello", "hey"],
+          ["how are you", "how are you doing"],
+          ["what is up", "what is going on", "what are you doing?"],
+          ["not bad", "not too bad", "i am good thanks", "great"],
+          ["not great", "tired", "bored"],
+          ["tell me a fact", "tell me something interesting"],
+          ["thank you", "thanks", "no problem"],
+          ["bye", "goodbye", "good bye", ]
+      ];
+
+      const catchOutputs = [
+          ["Hello", "Hey", "Hi there!", "what's good?"],
+          ["Not bad thanks, how are you doing?", "great, how are you feeling?", "Amazing, what about you?"],
+          ["Not much", "So much I can't remember", "working on projects"],
+          ["That's good", "Good to hear", "Great"],
+          ["Sorry to hear that", "That's a shame"],
+          ["People are crazy"],
+          ["No problem", "Pleasure is mine", "You're welcome"],
+          ["Take care", "Goodbye", "See you later"]
+      ];
+
+      const randomOutputs = [
+          "Interesting",
+          "I'm listening",
+          "Tell me more",
+          "That's Tricky",
+          "Oh yeee"
+      ];
+
+      window.onload = function() {
+        $('#input').focus()
+      }
+
+      // on enter press
+      $("#input").on("keypress", function(e) {
+        const ENTER_KEY = 13;
+        const input = $("#input").val();
+        if(e.keyCode === ENTER_KEY){
+          if(input != "") {
+            output(input);
+            $('#input').val("");
+          }
+        }
+      });
+      
+      // on click send
+      $("#sendBtn").on("click", function(e) {
+          const input = $("#input").val();
+          if(input != "") {
+            output(input);
+            $('#input').val("");
+          }
+      });
+
+      //decider function
+      output = (input) => {
+        const currentDate = new Date()
+        const time = `${formatTime(currentDate.getHours())}:${formatTime(currentDate.getMinutes())}`
+        let result
+        let text = input.toLowerCase()
+
+        if (compare(catchInputs, catchOutputs, text)){
+          result = compare(catchInputs, catchOutputs, text);
+        } else {
+          result = randomOutputs[Math.floor(Math.random() * randomOutputs.length)]
+        }
+
+        bot(result, time, scrollDown())
+        user(text, time, scrollDown()) 
+          
+      }
+
+      function formatTime(time) {
+          return time < 10 ? (`0${time}`) : time;
+      }
+        
+      compare = (userArray, botArray, string) => {
+        let item;
+        for (let a = 0; a < userArray.length; a++) {
+          for (let b = 0; b < botArray.length; b++) {
+            if (userArray[a][b] == string){
+              items = botArray[a]
+              item = items[Math.floor(Math.random() * items.length)];
+            }
+          }
+        }
+        return item;
+      }
+
+      user = (text, time) => {
+          $('#chat-container-inner').append(`<div class="outerBubbleUser"><div class="textBuble user">${text}</div><span class="timeStamp sml-margin-l">${time}</span></div>`);
+        }
+
+      bot = (result, time) => {
+        setTimeout(function(){
+          $('#chat-container-inner').append(`<div class="outerBubbleBot"><span class="timeStamp sml-margin-r">${time}</span><div class="textBuble bot">${result} </div></div>`)
+        }, 1000);
+        }
+
+      scrollDown = () => $('#chat-container-inner').animate({scrollTop:1000000}, 800)
+      
+    </script>
+
+  </body>
+</html>
+
+
