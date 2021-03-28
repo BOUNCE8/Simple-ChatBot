@@ -1,0 +1,66 @@
+function shiftToLeft (array) { // [0,1,0] <-  [1,0,0]
+  const result = array.slice();
+  result.shift(); // [1,0]
+  result.push(0); // [1,0,0]
+  return result;
+}
+
+function shiftToRight (array) { // [0,1,0] -> [0,0,1]
+  const result = array.slice();
+  result.pop(); // [0,1]
+  result.unshift(0); // [0,0,1]
+  return result;
+}
+
+
+
+
+function calc (size) {
+  let pieces = 0;
+  let solutions = 0;
+  const col = Array(size).fill(0);
+  const diagL = Array(size).fill(0);
+  const diagR = Array(size).fill(0);
+  
+  // check if a position is available
+  // NO -> Move on to the next cell
+  // YES -> 
+  //      Place a queen (increase the counter)
+  //      Check if we placed as many queens as size
+  //        YES -> Found a solution
+  //        NO -> Move on to the next row and start the whole thing again
+  
+
+  // rec
+  // col -> [0,0,0]  dL -> [0,0,0] dR -> [0,0,0]
+  // for i = 0             |    i = 1 
+  // col -> [0,0,0]  dL -> [0,0,0] dR -> [0,0,0]
+  // 
+
+
+
+  function rec (diagL, diagR) {
+    const dL = shiftToLeft(diagL);
+    const dR = shiftToRight(diagR);
+
+    for (let i = 0; i < size; i++) {
+      // if(col[i] === 0 && dL[i] === 0 && dR[i] === 0) {
+      if (!col[i] && !dL[i] && !dR[i]) {
+        col[i] = 1;
+        dL[i] = 1;
+        dR[i] = 1;
+        pieces++;
+        if (pieces === size) solutions++;
+        else rec(dL, dR); // jump to the next row
+        pieces--;
+        col[i] = 0;
+        dL[i] = 0;
+        dR[i] = 0;
+      }
+    }
+  }
+
+  rec(diagL, diagR);
+
+  return solutions;
+}

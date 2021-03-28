@@ -1,0 +1,88 @@
+// Create message class
+class Message {
+  constructor (authorId, content, timestamp) {
+    this.authorId = authorId;
+    this.content = content;
+    this.timestamp = timestamp;
+  }
+}
+
+// Get user input
+$(() => {
+  $('.send-button').on('click', (e) => {
+    e.preventDefault();
+    const userInput = $('#text').val();
+
+    // Create message
+    const message = new Message (true, userInput, Date.now());
+  
+    // Display message
+    displayMessage(message);
+    $('#text').val('');
+
+  });
+});
+
+// Get answers
+const url = 'https://cw-quotes.herokuapp.com/api/quotes/random';
+
+function getAnswers () {
+  $.get(url, (data) => {
+    // Create message
+    const message = new Message (false, data.result.text, Date.now());
+  
+    // Display message
+    displayMessage(message);
+    
+    setTimeout(() => {
+      displayMessage(message);
+      getAnswers ();
+    }, Math.random() * 10000);
+  
+  });
+  
+  // $.ajax(url).done((data) => {
+  //   // Create message
+  //   const message = new Message (false, data.result.text, Date.now());
+  //   // Display message
+  //   displayMessage(message);
+    
+  //   setTimeout(() => {
+  //     displayMessage(message);
+  //     getAnswers ();
+  //   }, Math.random() * 10000);
+  
+  // });
+}
+
+getAnswers ();
+
+// Display message
+function displayMessage (msg) {
+  const $messagesContainer = $('.messages-container');
+  const $messagesDiv = $('<div>')
+    .addClass(`message ${msg.authorId ? 'right' : 'left'}`);
+  const $messagesText = $('<div>')
+    .addClass('message-text')
+    .text(msg.content);
+  const $messagesTime = $('<div>')
+    .addClass('message-time')
+    .text(prettifyDate(msg.timestamp));
+  
+  $messagesDiv.append($messagesText);
+  $messagesDiv.append($messagesTime);
+  $messagesDiv.appendTo($messagesContainer);
+  
+  $messagesContainer.animate({
+    scrollTop: $messagesContainer[0].scrollHeight
+  });
+
+}
+
+// Prettify time
+function prettifyDate (milliseconds) {
+  return new Date(milliseconds).toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}

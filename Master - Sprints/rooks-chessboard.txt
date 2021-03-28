@@ -1,0 +1,61 @@
+// Given a chessboard of `n` size, in how many different ways can you place `n` 
+// rooks such that none of them attack each other?
+​
+function calc (size) {
+  let pieces = 0; //how many pieces have we put down?
+  let solutions = 0; //how many solutions have we found?
+​
+  //board representation
+  //[1, 1, 1] 
+  // _ 1 _ 
+  // 1 _ _ 
+  // _ _ 1 [1, 1, 1]
+  let cols = Array(size).fill(0);
+​
+  function findSolutions () {
+​
+    // want to place a rook, starting from top left
+    for (var i = 0; i < size; i++) {
+    // check if position available
+      if (!cols[i]) {
+        // yes? 
+        cols[i] = 1; // -> place rook
+        pieces++; // -> increment pieces
+​
+        // have we found a solution?
+        if (pieces === size) {
+          solutions++;// yes? increment solutions
+        } else {
+          findSolutions();  // no? go down a row
+        }
+​
+        cols[i] = 0; // start taking rooks off
+        pieces--;// decrement number of pieces
+       
+      }
+      //otherwise, carry on to the next place on the board
+    }
+    //if we're off the end of the row, return
+  }
+​
+  findSolutions();
+  return solutions;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
