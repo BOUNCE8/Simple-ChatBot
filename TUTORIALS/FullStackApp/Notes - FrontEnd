@@ -1,0 +1,85 @@
+npx create-react-app 'app name'
+-clear out default files
+
+### Component Layout ####
+- breakdown into seperate compoents
+- 
+
+/////////////////////////////////////////////////////////////
+
+### Folder Structure ###
+-Components
+  -inputForm
+  -Dashboard.js
+  -List
+  -ListItem
+-Services
+  -ApiService.js
+
+  // Remember to import and export all components //
+
+Import useState, useEffect for state management.
+
+### FORM FIELD ###
+import useState
+
+- input field
+- 2 way binding needed will be needed
+- e.preventDefault(); to stop refresh on submit
+- e.target.value (this will grab the text inputed)
+
+in post request, you must input into the body of the request.
+i.e.
+method: "Post",
+body: JSON.stringify({title or props.title}), 
+header: {
+  "Content-Type" : "application/json"
+}
+
+const [topic, setTop] = useState('');
+
+<input
+  onChange={}
+  value={}
+  type='text'
+>
+
+
+//////////////////////////////////////////////////////////////
+
+### Fetching Data ###
+-use promises
+
+-CORS Policy: 
+require and ' app.use(cors()) ' on server index.js
+
+### Props ###
+
+- pass down data via props to child components.
+
+//////////////////////////////////////////////////////////////
+
+### onClick ###
+
+- functions at app level to be prop drilled down where needed.
+
+deleteFunc etc
+
+- Remember to do a callback when invoking at component level
+-make sure to pass id to target an element
+
+///////////////////////////////////////////////////////////////
+
+### ApiService ###
+
+- add ' .catch( error => console.log(error)) as we will be using promises
+
+///////////////////////////////////////////////////////////////
+
+### Formating Date ###
+import moment
+
+moment (npm i moment)
+
+
+

@@ -1,0 +1,15 @@
+
+### MUST DO's ###
+
+- Commit Often and with each implementation
+
+### Http Requests ###
+
+// Mongoose update score
+topic.score = direction === 'up' ? topic.score++ : topic.score--
+
+for updates using PUT modifies where Patch replaces.
+
+- Test each request with postman before moving to the next.
+
+- Ensure each request has a try catch, in catch console.log(error)
