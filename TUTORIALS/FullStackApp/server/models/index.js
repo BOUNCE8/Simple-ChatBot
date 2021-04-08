@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-mongoose.connect(`${process.env.DB_URL}/${process.env.DB_NAME}`, {
+mongoose.connect(`mongodb://localhost:27017/AppDB`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}, (err) => {
-  if (err) console.error(err);
+}, (error) => {
+  if (error) console.error(error);
   console.log('Connected to DB!!!!')
 });
 
-//finish this
+module.exports = mongoose

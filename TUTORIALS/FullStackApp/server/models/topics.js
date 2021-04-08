@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose = require('./index');
 const Schema = mongoose.Schema
 
-var topicSchema = Schema({
+const topicSchema = Schema({
   
   title: {
     type: String,
